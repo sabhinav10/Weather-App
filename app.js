@@ -21,11 +21,16 @@ window.addEventListener('load', ()=> {
                 .then(data => {
                     console.log(data);
                     const { temperature, summary, icon } = data.currently;
+                    // Set DOM Elements from the API
                     temperatureDegree.textContent = temperature;
                     temperatureDescription.textContent = summary;
                     locationTimezone.textContent = data.timezone;
+                        // Formula for Celsius
                         let celsius = (temperature - 32) * (5 / 9);
+                    // Set icon
                     setIcons(icon, document.querySelector(".icon"));
+
+                    // Change temperature to Celsius/Farenheit
                         temperatureSection.addEventListener('click', () => {
                             if(temperatureSpan.textContent === "F"){
                                 temperatureSpan.textContent = "C";
